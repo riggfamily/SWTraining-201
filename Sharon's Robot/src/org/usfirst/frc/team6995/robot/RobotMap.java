@@ -7,6 +7,8 @@
 
 package org.usfirst.frc.team6995.robot;
 
+import edu.wpi.first.wpilibj.Preferences;
+
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -14,15 +16,8 @@ package org.usfirst.frc.team6995.robot;
  * floating around.
  */
 public class RobotMap {
-	// For example to map the left and right motors, you could define the
-	// following variables to use with your drivetrain subsystem.
-	// public static int leftMotor = 1;
-	// public static int rightMotor = 2;
 
-	// If you are using multiple modules, make sure to define both the port
-	// number and the module. For example you with a rangefinder:
-	// public static int rangefinderPort = 1;
-	// public static int rangefinderModule = 1;
+	static Preferences prefs;
 	
 	// Talons
 	public static int DRIVEBASE_RIGHT_TALON_CAN_ID = 2;
@@ -33,4 +28,5 @@ public class RobotMap {
 	public static int DRIVE_MOVE_AXIS = 0;
 	public static int DRIVE_ROTATE_AXIS = 2;
 	
+	public static double AUTO_DISTANCE = prefs.getDouble("Auto Distance", -120); // Distance to drive forward in auto
 }

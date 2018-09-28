@@ -13,6 +13,9 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+import org.usfirst.frc.team6995.robot.commands.AutoDriveDistanceC;
+import org.usfirst.frc.team6995.robot.commands.AutoDriveTimeC;
 import org.usfirst.frc.team6995.robot.commands.DriveArcadeC;
 import org.usfirst.frc.team6995.robot.subsystems.DrivebaseS;
 
@@ -41,7 +44,8 @@ public class Robot extends TimedRobot {
 	public void robotInit() {
 		drivebase = new DrivebaseS();
 		m_oi = new OI();
-		m_chooser.addDefault("Default Auto", new DriveArcadeC());
+		m_chooser.addDefault("Auto by Time", new AutoDriveTimeC());
+		m_chooser.addObject("Auto by Distance", new AutoDriveDistanceC());
 
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);

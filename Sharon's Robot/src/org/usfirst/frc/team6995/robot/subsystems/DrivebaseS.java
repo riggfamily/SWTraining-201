@@ -45,4 +45,17 @@ public class DrivebaseS extends Subsystem {
     public void arcadeDrive(double moveSpeed,double rotateSpeed) {
     	differentialDrive.arcadeDrive((moveSpeed*Robot.throttle), (rotateSpeed*Robot.throttle));
     }
+    
+    public void resetEncoder() {
+    	driveLeft.getSensorCollection().setQuadraturePosition(0, 500);
+    }
+    
+    public double getEncoderCount() {
+    	return driveLeft.getSensorCollection().getQuadraturePosition();
+    }
+    
+    public double getDistanceTraveled(double counts) {
+    	double distance = counts /(4096/(6*Math.PI));
+    	return distance;
+    }
 }
