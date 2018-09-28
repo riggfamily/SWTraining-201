@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team6995.robot.commands.DriveArcadeC;
 import org.usfirst.frc.team6995.robot.subsystems.DrivebaseS;
 
-/**
+/** Sharon's Robot Code
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the TimedRobot
  * documentation. If you change the name of this class or the package after
@@ -26,6 +26,7 @@ public class Robot extends TimedRobot {
 
 	public static DrivebaseS drivebase;
 	public static OI m_oi;
+	public static OI oi;
 
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
