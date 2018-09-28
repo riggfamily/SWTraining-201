@@ -25,9 +25,9 @@ public class RobotMap {
 	// public static int rangefinderModule = 1;
 	
 	// Talons
-	public static int DRIVEBASE_RIGHT_TALON = 2;
-	public static int DRIVEBASE_LEFT_TALON = 3;
-	
+	public static int DRIVEBASE_RIGHT_TALON_CAN_ID = 2;
+	public static int DRIVEBASE_LEFT_TALON_CAN_ID = 3;
+
 	// Joysticks
 	public static int OI_JOYSTICK = 0;
 	public static int DRIVE_MOVE_AXIS = 0;
