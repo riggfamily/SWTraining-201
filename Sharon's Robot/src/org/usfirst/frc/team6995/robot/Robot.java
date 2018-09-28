@@ -7,6 +7,7 @@
 
 package org.usfirst.frc.team6995.robot;
 
+import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -26,7 +27,8 @@ public class Robot extends TimedRobot {
 
 	public static DrivebaseS drivebase;
 	public static OI m_oi;
-	public static OI oi;
+	Preferences pref;
+	public static double throttle;
 
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -43,6 +45,11 @@ public class Robot extends TimedRobot {
 
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
+		throttle=pref.getDouble("Throttle",0.5);
+		if (throttle < 0 | throttle > 1) {
+			throttle = 0.5;
+		}
+		
 	}
 
 	/**

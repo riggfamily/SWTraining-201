@@ -1,5 +1,6 @@
 package org.usfirst.frc.team6995.robot.subsystems;
 
+import org.usfirst.frc.team6995.robot.Robot;
 import org.usfirst.frc.team6995.robot.RobotMap;
 import org.usfirst.frc.team6995.robot.commands.DriveArcadeC;
 
@@ -42,6 +43,6 @@ public class DrivebaseS extends Subsystem {
     }
     
     public void arcadeDrive(double moveSpeed,double rotateSpeed) {
-    	differentialDrive.arcadeDrive(moveSpeed, rotateSpeed);
+    	differentialDrive.arcadeDrive((moveSpeed*Robot.throttle), (rotateSpeed*Robot.throttle));
     }
 }
