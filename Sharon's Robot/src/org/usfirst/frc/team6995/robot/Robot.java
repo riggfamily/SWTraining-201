@@ -16,7 +16,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team6995.robot.commands.AutoDriveDistanceC;
 import org.usfirst.frc.team6995.robot.commands.AutoDriveTimeC;
-import org.usfirst.frc.team6995.robot.commands.DriveArcadeC;
 import org.usfirst.frc.team6995.robot.subsystems.DrivebaseS;
 
 /** Sharon's Robot Code - Testing Preferences
@@ -30,11 +29,11 @@ public class Robot extends TimedRobot {
 
 	public static DrivebaseS drivebase;
 	public static OI m_oi;
-	Preferences pref;
+	Preferences prefs;
 	public static double throttle;
 
 	Command m_autonomousCommand;
-	SendableChooser<Command> m_chooser = new SendableChooser<>();
+	SendableChooser<Command> m_chooser = new SendableChooser<>();  
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -44,12 +43,12 @@ public class Robot extends TimedRobot {
 	public void robotInit() {
 		drivebase = new DrivebaseS();
 		m_oi = new OI();
+		
 		m_chooser.addDefault("Auto by Time", new AutoDriveTimeC());
 		m_chooser.addObject("Auto by Distance", new AutoDriveDistanceC());
-
-		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
-		throttle=pref.getDouble("Throttle",0.5);
+		
+		throttle=prefs.getDouble("Throttle",0.5);
 		if (throttle < 0 | throttle > 1) {
 			throttle = 0.5;
 		}

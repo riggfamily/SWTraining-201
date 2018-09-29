@@ -4,6 +4,7 @@ import org.usfirst.frc.team6995.robot.Robot;
 import org.usfirst.frc.team6995.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -18,15 +19,17 @@ public class AutoDriveTimeC extends Command {
     }
 
     protected void initialize() {
-    	setTimeout(5);  // timeout set in preferences
+    	setTimeout(RobotMap.AUTO_TIME);  // timeout set in preferences
     }
 
     protected void execute() {
+    	SmartDashboard.putNumber("Speed in AutoTime", (autospeed * 0.5));
      	Robot.drivebase.arcadeDrive((autospeed * 0.5), 0); // drive straight at half speed
    
     }
 
     protected boolean isFinished() {
+    	SmartDashboard.putNumber("TimeElapsed",timeSinceInitialized());
         return isTimedOut();
     }
 

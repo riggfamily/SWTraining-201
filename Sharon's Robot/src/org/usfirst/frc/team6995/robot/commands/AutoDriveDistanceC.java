@@ -4,6 +4,7 @@ import org.usfirst.frc.team6995.robot.Robot;
 import org.usfirst.frc.team6995.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class AutoDriveDistanceC extends Command {
 
@@ -19,11 +20,13 @@ public class AutoDriveDistanceC extends Command {
     }
 
     protected void execute() {
-    	//Robot.drivebase.arcadeDrive(.5, 0, 1);
+    	SmartDashboard.putNumber("Speed in AutoDistance", (autospeed * 0.5));
     	Robot.drivebase.arcadeDrive((autospeed * 0.5), 0); // drive straight at half speed
+
     }
 
     protected boolean isFinished() {
+    	SmartDashboard.putNumber("DistanceTraveled", Robot.drivebase.getDistanceTraveled(Math.abs(Robot.drivebase.getEncoderCount())));
         return (Robot.drivebase.getDistanceTraveled(Math.abs(Robot.drivebase.getEncoderCount())) 
         		>= Math.abs(RobotMap.AUTO_DISTANCE));
     }

@@ -19,9 +19,6 @@ public class DrivebaseS extends Subsystem {
 	private WPI_TalonSRX driveRight = null;
 	private DifferentialDrive differentialDrive = null;
 	
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.	
-	
 	public DrivebaseS() {
 	
 		driveLeft = new WPI_TalonSRX(RobotMap.DRIVEBASE_LEFT_TALON_CAN_ID);
@@ -55,7 +52,7 @@ public class DrivebaseS extends Subsystem {
     }
     
     public double getDistanceTraveled(double counts) {
-    	double distance = counts /(4096/(6*Math.PI));
+    	double distance = counts /(4096/(6*Math.PI));  // 6pi inches per 4096 counts  ?? PPR=Pulses per revolution
     	return distance;
     }
 }
