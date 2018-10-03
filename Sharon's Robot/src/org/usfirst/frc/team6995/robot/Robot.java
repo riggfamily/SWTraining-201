@@ -48,7 +48,7 @@ public class Robot extends TimedRobot {
 		m_chooser.addObject("Auto by Distance", new AutoDriveDistanceC());
 		SmartDashboard.putData("Auto mode", m_chooser);
 		
-		throttle=prefs.getDouble("Throttle",0.5);
+		throttle=0.5; // prefs.getDouble("Throttle",0.5);
 		if (throttle < 0 | throttle > 1) {
 			throttle = 0.5;
 		}
