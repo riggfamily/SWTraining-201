@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class AutoDriveTimeC extends Command {
-	double autospeed;
+	double autospeed = 0.7;
 	double elapsedtime = 0;
 	
     public AutoDriveTimeC() {
@@ -23,8 +23,9 @@ public class AutoDriveTimeC extends Command {
     }
 
     protected void execute() {
-    	SmartDashboard.putNumber("Speed in AutoTime", (autospeed * 0.5));
-     	Robot.drivebase.arcadeDrive((autospeed * 0.5), 0); // drive straight at half speed
+    	SmartDashboard.putNumber("Speed in AutoTime", (autospeed));
+     	Robot.drivebase.arcadeDrive((autospeed), 0); // drive straight at half speed
+   
    
     }
 

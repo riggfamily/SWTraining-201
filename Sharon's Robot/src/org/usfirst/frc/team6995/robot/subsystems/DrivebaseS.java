@@ -9,6 +9,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -40,9 +41,10 @@ public class DrivebaseS extends Subsystem {
     }
     
     public void arcadeDrive(double moveSpeed,double rotateSpeed) {
-    	differentialDrive.arcadeDrive((moveSpeed*Robot.throttle), (rotateSpeed*Robot.throttle));
-    }
-    
+    //	differentialDrive.arcadeDrive((moveSpeed*Robot.throttle), (rotateSpeed*Robot.throttle));
+    	SmartDashboard.putNumber("Throttle in AutoTime", (Robot.throttle));
+    	differentialDrive.arcadeDrive((moveSpeed), (rotateSpeed));
+    }    
     public void resetEncoder() {
     	driveLeft.getSensorCollection().setQuadraturePosition(0, 500);
     }

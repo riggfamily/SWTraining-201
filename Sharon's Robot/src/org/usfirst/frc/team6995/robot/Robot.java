@@ -29,7 +29,7 @@ public class Robot extends TimedRobot {
 
 	public static DrivebaseS drivebase;
 	public static OI m_oi;
-	Preferences prefs;
+//	Preferences prefs;
 	public static double throttle;
 
 	Command m_autonomousCommand;
@@ -47,8 +47,8 @@ public class Robot extends TimedRobot {
 		m_chooser.addDefault("Auto by Time", new AutoDriveTimeC());
 		m_chooser.addObject("Auto by Distance", new AutoDriveDistanceC());
 		SmartDashboard.putData("Auto mode", m_chooser);
-		
-		throttle=0.5; // prefs.getDouble("Throttle",0.5);
+			
+		throttle=Preferences.getInstance().getDouble("Throttle",0.5);
 		if (throttle < 0 | throttle > 1) {
 			throttle = 0.5;
 		}
@@ -83,15 +83,14 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		m_autonomousCommand = m_chooser.getSelected();
-
+		m_autonomousCommand = (Command) m_chooser.getSelected();
+	
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
 		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
 		 * = new MyAutoCommand(); break; case "Default Auto": default:
 		 * autonomousCommand = new ExampleCommand(); break; }
 		 */
-
 		// schedule the autonomous command (example)
 		if (m_autonomousCommand != null) {
 			m_autonomousCommand.start();
@@ -112,6 +111,7 @@ public class Robot extends TimedRobot {
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
+		
 		if (m_autonomousCommand != null) {
 			m_autonomousCommand.cancel();
 		}

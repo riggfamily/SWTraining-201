@@ -17,7 +17,7 @@ import edu.wpi.first.wpilibj.Preferences;
  */
 public class RobotMap {
 
-	static Preferences prefs;
+	// static Preferences prefs;
 	
 	// Talons
 	public static int DRIVEBASE_RIGHT_TALON_CAN_ID = 2;
@@ -28,6 +28,6 @@ public class RobotMap {
 	public static int DRIVE_MOVE_AXIS = 1;
 	public static int DRIVE_ROTATE_AXIS = 0;
 	
-	public static double AUTO_DISTANCE = -120; //prefs.getDouble("Auto Distance", -120); // Distance to drive in auto
-	public static double AUTO_TIME = 60;  // Seconds to drive in auto
+	public static double AUTO_DISTANCE = Preferences.getInstance().getDouble("Auto Distance", -120); // Distance to drive in auto
+	public static double AUTO_TIME = 10;  // Seconds to drive in auto
 }
